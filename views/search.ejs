@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4"></h1>
+    <div class="row">
+        <% if (listings.length > 0) { %>
+            <% listings.forEach(listing => { %>
+                <div class="col-md-4 mb-3">
+                    <a href="/listings/<%= listing._id %>" class="listing-link">
+                        <div class="card col listing-card">
+                          <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+                          <div class="card-img-overlay"></div>
+                          <div class="card-body">
+                            <p class="card-text">
+                              <b><%= listing.title %></b><br>
+                              &#8377; <%=listing.price.toLocaleString("en-IN")%>/night
+                              <i class="tax-info"> &nbsp;&nbsp;+18% GST</i>
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="col-12 text-center">
+                <h3>No Destinations Found in "<%= location %>"</h3>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+
+
+
